@@ -7,6 +7,9 @@ inputs:
   target:  # string
     description: 'Environment where deploy is to be performed to'
     required: false # if no param is given, default cap target will be selected
+  cap_path:  # string
+    description: 'Path to Capistrano root'
+    required: false # if no param is given, root of project will be used
   deploy_key:
     description: 'Deployment key used for decryption of SSH RSA private key'
     required: true
