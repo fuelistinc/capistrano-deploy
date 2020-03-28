@@ -1,4 +1,4 @@
-name: 'Capistrano deploy'
+name: 'Capistrano Deployment'
 description: 'Deploy an application using capistrano to the given target'
 branding:
   icon: 'arrow-right-circle'  

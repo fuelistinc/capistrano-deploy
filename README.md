@@ -8,6 +8,9 @@ Ruby should be installed with official ruby action (https://github.com/actions/s
 ### `target`
 Environment where deploy is to be performed to. E.g. "production", "staging". Default value is empty
 
+### `cap_path`
+Path to Capistrano files. Can be left empty to use root of project.
+
 ### `deploy_key`
 **Required** Symmetric key to decrypt private RSA key. Must be a string.
 
