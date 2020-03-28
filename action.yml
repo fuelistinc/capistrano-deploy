@@ -1,7 +1,7 @@
 name: 'Capistrano Deployment'
 description: 'Deploy an application using capistrano to the given target'
 branding:
-  icon: 'arrow-right-circle'  
+  icon: 'terminal'
   color: 'black'
 inputs:
   target:  # string
