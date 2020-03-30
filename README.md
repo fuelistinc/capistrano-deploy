@@ -64,8 +64,9 @@ jobs:
         key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-bundle-
-    - uses: miloserdow/capistrano-deploy@v2
+    - uses: realify/capistrano-deploy@v3
       with:
         target: production
+        cap_path: ./tools/capistrano/
         deploy_key: ${{ secrets.DEPLOY_ENC_KEY }}
 ```
