@@ -18,6 +18,6 @@ inputs:
     description: 'Path to SSH private key encrypted with deploy_key'
     required: true
     default: './config/deploy_id_rsa_enc'
-runs:  
-  using: 'node12'
+runs:
+  using: 'node14'
   main: 'lib/run.js'

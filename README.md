@@ -2,11 +2,11 @@
 Github deploy action for Capistrano. Use this action to automate your capistrano deployment process.
 
 ## Dependencies
-Ruby should be installed with official ruby action (https://github.com/actions/setup-ruby)
+This action expects Ruby to be installed along with Capistrano, see below for a [basic workflow example](#workflow-example) that uses [ruby/setup-ruby](https://github.com/ruby/setup-ruby).
 
 ## Inputs
 ### `target`
-Environment where deploy is to be performed to. E.g. "production", "staging". Default value is empty
+Environment where deploy is to be performed to. E.g. "production", "staging". Default value is empty.
 
 ### `cap_path`
 Path to Capistrano files. Can be left empty to use root of project.
@@ -15,7 +15,13 @@ Path to Capistrano files. Can be left empty to use root of project.
 **Required** Symmetric key to decrypt private RSA key. Must be a string.
 
 ### `enc_rsa_key_pth`
-**Required** Path to the encrypted key. Default `"config/deploy_id_rsa_enc"`.
+Path to the encrypted key. Default `"config/deploy_id_rsa_enc"`. You have to use either `enc_rsa_key_pth` or `enc_rsa_key_val`.
+
+### `enc_rsa_key_val`
+Contents of the encrypted key. Best to use as repository secret. You have to use either `enc_rsa_key_pth` or `enc_rsa_key_val`.
+
+### `working-directory`
+The directory from which to run the deploy commands, including `bundle install`.
 
 ## Outputs
 No outputs
@@ -52,13 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.5
-    - name: Restore Bundler cache
-      id: cache
-      uses: actions/cache@v1
+    - uses: ruby/setup-ruby@v1
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
